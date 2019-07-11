@@ -1,4 +1,14 @@
 
+### Q. What’s The Relationship Between Software Architecture And Software Design?
+
+- Software architecture exposes the structure of a system while hiding the implementation details. Architecture also focuses on how the elements and components within a system interact with one other. Software design delves deeper into the implementation details of the system. Design concerns include the selection of data structures and algorithms, or the implementation details of individual components.
+
+- Architecture and design concerns often overlap. Rather than use hard and fast rules to distinguish between architecture and design, it makes sense to combine them. In some cases, decisions are clearly more architectural in nature. In other cases, decisions focus heavily on design and how it helps to realize that architecture.
+
+- An important detail to note is that architecture is design, but not all design is architectural. In practice, the architect is the one who draws the line between software architecture (architectural design) and detailed design (non-architectural design). There are no rules or guidelines that fit all cases—although, there have been attempts to formalize the distinction.
+
+- Current trends in software architecture assume that the design evolves over time and that a software architect cannot know everything up front to fully architect a system. The design generally evolves during the implementation stages of the system. The software architect continuously learns and tests the design against real world requirements.
+
 ### Q: What is Dependency Injection?
 Topic: Design Patterns
 Difficulty: ⭐⭐
