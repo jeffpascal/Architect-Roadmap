@@ -22,3 +22,16 @@ Requirements:
 - Able to collaborate productively with other specialists
 - mastery of one profession
    - build lesser capabilities in adjoining professions
+   
+   
+Goals:
+   - master Java
+      - java WEB
+      - java microservices with spring
+      - JPA and Hibernate
+      - 
+
+- TBD
+- TBD
+- TBD
+- Architect
