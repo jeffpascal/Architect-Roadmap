@@ -1,3 +1,13 @@
+### Q: What does “program to interfaces, not implementations” mean?
+Topic: Design Patterns
+Difficulty: ⭐⭐⭐
+
+Coding against interface means, the client code always holds an Interface object which is supplied by a factory.
+
+Any instance returned by the factory would be of type Interface which any factory candidate class must have implemented. This way the client program is not worried about implementation and the interface signature determines what all operations can be done.
+
+This approach can be used to change the behavior of a program at run-time. It also helps you to write far better programs from the maintenance point of view.
+
 ### Q: What are Heuristic Exceptions?
 Topic: Software Architecture
 Difficulty: ⭐⭐⭐⭐⭐
