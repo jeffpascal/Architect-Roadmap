@@ -1,5 +1,5 @@
 
-### Q5: What Is CAP Theorem?
+### Q: What Is CAP Theorem?
 - Topic: Software Architecture
 - Difficulty: ⭐⭐⭐⭐⭐
 
