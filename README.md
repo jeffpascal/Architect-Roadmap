@@ -4,9 +4,9 @@ Road to architecture
 TODO: 
 - master Java Developement
    - finish Badge courses
-      - Open source 
+      - Open source [done]
       - Web developement
-      - Java performance tuning
+      - Java performance tuning [24%]
 - finish reading materials sent by Laurentiu (T-shape) (Cariera tehnica IBM cariera profesionala in contextul actual)
    - https://w3-connections.ibm.com/blogs/alt/entry/Are_T_shaped_professions_fit_for_Generation_Z_2_of_2?lang=en
    - https://w3-connections.ibm.com/blogs/alt/entry/Are_T_shaped_professions_fit_for_Generation_Z_1_of_2?lang=en
