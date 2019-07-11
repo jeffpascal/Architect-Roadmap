@@ -1,4 +1,20 @@
 
+### Question . What Is Software Design?
+
+Software design is the process of conceptualizing the software requirements into software implementation. This is the initial phase within the software development life cycle (SDLC)—shifting the concentration from the problem to the solution.
+
+When conceptualizing the software, the design process establishes a plan that takes the user requirements as challenges and works to identify optimum solutions. The plan should determine the best possible design for implementing the intended solution.
+
+Software design includes all activities that aid in the transformation from requirement specification to implementation.
+
+Major artifacts of the software design process include:
+
+- Software requirements specification: This document describes the expected behavior of the system in the form of functional and non-functional requirements. These requirements should be clear, actionable, measurable, and traceable to business requirements. Requirements should also define how the software should interact with humans, hardware, and other systems.
+
+- High-level design: The high-level design breaks the system’s architectural design into a less-abstracted view of sub-systems and modules and depicts their interaction with each other. This high-level design perspective focuses on how the system, along with all its components, implements in the form of modules. It recognizes the modular structure of each sub-system and their interaction among one another.
+
+- Detailed design: Detailed design involves the implementation of what is visible as a system and its sub-systems in a high-level design. This activity is more detailed towards modules and their implementations. It defines a logical structure of each module and their interfaces to communicate with other modules.
+
 ### Q. What’s The Relationship Between Software Architecture And Software Design?
 
 - Software architecture exposes the structure of a system while hiding the implementation details. Architecture also focuses on how the elements and components within a system interact with one other. Software design delves deeper into the implementation details of the system. Design concerns include the selection of data structures and algorithms, or the implementation details of individual components.
