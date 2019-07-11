@@ -1,3 +1,10 @@
+
+### Q: What is Dependency Injection?
+Topic: Design Patterns
+Difficulty: ⭐⭐
+Dependency injection makes it easy to create loosely coupled components, which typically means that components consume functionality defined by interfaces without having any first-hand knowledge of which implementation classes are being used.
+Dependency injection makes it easier to change the behavior of an application by changing the components that implement the interfaces that define application features. It also results in components that are easier to isolate for unit testing.
+
 ### Q: What Is BASE Property Of A System?
 Topic: Software Architecture
 Difficulty: ⭐⭐⭐⭐
