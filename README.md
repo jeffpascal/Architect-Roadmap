@@ -12,5 +12,5 @@ TODO:
 Requirements: 
 - Highly skilled in your own technical speciality(Java)
 - Able to collaborate productively with other specialists
-- mastery of one profession, whilst 
+- mastery of one profession
    - build lesser capabilities in adjoining professions
