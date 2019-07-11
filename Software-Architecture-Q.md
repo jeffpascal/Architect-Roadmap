@@ -43,3 +43,26 @@ The Twelve-Factor App methodology is a methodology for building software as a se
 10. Dev/Prod parity - All environments should be as similar as possible.
 11. Logs - Applications should produce logs as event streams and leave the execution environment to aggregate.
 12. Admin Processes - Any needed admin tasks should be kept in source control and packaged with the application.
+
+### Q: What Is Shared Nothing Architecture? How Does It Scale?
+Topic: Software Architecture
+Difficulty: ⭐⭐⭐⭐⭐
+
+A shared nothing architecture (SN) is a distributed computing approach in which each node is independent and self-sufficient, and there is no single point of contention required across the system.
+
+This means no resources are shared between nodes (No shared memory, No shared file storage)
+The nodes are able to work independently without depending on each other for any work.
+Failure on one node affects only the users of that node, however other nodes continue to work without any disruption.
+This approach is highly scalable since it avoid the existence of single bottleneck in the system. Shared nothing is recently become popular for web development due to its linear scalability. Google has been using it for long time.
+
+In theory, A shared nothing system can scale almost infinitely simply by adding nodes in the form of inexpensive machines.
+
+### Q: What Does Eventually Consistent Mean?
+Topic: Software Architecture
+Difficulty: ⭐⭐⭐⭐⭐
+
+Unlike relational database property of Strict consistency, eventual consistency property of a system ensures that any transaction will eventually (not immediately) bring the database from one valid state to another. This means there can be intermediate states that are not consistent between multiple nodes.
+
+Eventually consistent systems are useful at scenarios where absolute consistency is not critical. For example in case of Twitter status update, if some users of the system do not see the latest status from a particular user its may not be very devastating for system.
+
+Eventually consistent systems can not be used for use cases where absolute/strict consistency is required. For example a banking transactions system can not be using eventual consistency since it must consistently have the state of a transaction at any point of time. Your account balance should not show different amount if accessed from different ATM machines.
