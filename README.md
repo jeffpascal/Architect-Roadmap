@@ -4,7 +4,10 @@ Road to architecture
 TODO: 
 - master Java Developement
    - finish Badge courses
-- 
+- finish reading materials sent by Laurentiu (T-shape)
+   - https://w3-connections.ibm.com/blogs/alt/entry/Are_T_shaped_professions_fit_for_Generation_Z_2_of_2?lang=en
+   - https://w3-connections.ibm.com/blogs/alt/entry/Are_T_shaped_professions_fit_for_Generation_Z_1_of_2?lang=en
+   - https://w3-connections.ibm.com/blogs/alt?lang=en
 
 Requirements: 
 - Highly skilled in your own technical speciality(Java)
