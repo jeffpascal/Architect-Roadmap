@@ -4,11 +4,14 @@ Road to architecture
 TODO: 
 - master Java Developement
    - finish Badge courses
+      - Open source 
+      - Web developement
+      - Java performance tuning
 - finish reading materials sent by Laurentiu (T-shape)
    - https://w3-connections.ibm.com/blogs/alt/entry/Are_T_shaped_professions_fit_for_Generation_Z_2_of_2?lang=en
    - https://w3-connections.ibm.com/blogs/alt/entry/Are_T_shaped_professions_fit_for_Generation_Z_1_of_2?lang=en
    - https://w3-connections.ibm.com/blogs/alt?lang=en
-- Read courses and articles by:
+- Read courses and articles by (sent by Laurentiu):
    - [Mark Richards]( https://www.developertoarchitect.com/)
    - [Neal Ford]( http://nealford.com/)
 - Finish O'reilly course 
