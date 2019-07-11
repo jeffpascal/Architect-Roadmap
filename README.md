@@ -31,7 +31,7 @@ Goals:
       - JPA and Hibernate
       - 
 
-- TBD
-- TBD
-- TBD
+- 
+- 
+- 
 - Architect
