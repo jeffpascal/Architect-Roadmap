@@ -17,6 +17,7 @@ TODO:
    - [Neal Ford]( http://nealford.com/) 
 - Finish O'reilly course 
     - Nathaniel Schutta [I'm a Software Architect, Now What?](https://learning.oreilly.com/library/view/im-a-software/9781491935842/) **[done]**
+    - [Software Architect fundamentals by Neal Ford and Mark Richards](https://learning.oreilly.com/videos/software-architecture-fundamentals/9781491998991)
     
 Requirements: 
 - Highly skilled in your own technical speciality(Java)
