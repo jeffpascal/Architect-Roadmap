@@ -38,3 +38,7 @@ Goals:
 - 
 - 
 - Architect
+
+
+## ECMAScript - updated javascript
+- Babel can be used to compile code to work on older version of browers, but still have the most recent syntax.
