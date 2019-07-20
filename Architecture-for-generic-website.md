@@ -10,7 +10,7 @@
   - error handling? ??
   
 
-Event driven architeture: Best for: (top 5 patterns)[https://techbeacon.com/app-dev-testing/top-5-software-architecture-patterns-how-make-right-choice]
+Event driven architeture: Best for: [top 5 patterns](https://techbeacon.com/app-dev-testing/top-5-software-architecture-patterns-how-make-right-choice)
 Asynchronous systems with asynchronous data flow
 
 Applications where the individual data blocks interact with only a few of the many modules
