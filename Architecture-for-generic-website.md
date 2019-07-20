@@ -8,6 +8,8 @@
   - adaptive to complex environements
   - testing?? bad
   - error handling? ??
+- microservices ? good if i can think it small and modular
+  - rapid developement++
   
 
 Event driven architeture: Best for: [top 5 patterns](https://techbeacon.com/app-dev-testing/top-5-software-architecture-patterns-how-make-right-choice)
