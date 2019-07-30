@@ -73,6 +73,7 @@ Scaling down needs to be an option as well to improve cost effectiveness
 
 
 ## The actor model
+- **AKKA**
 - the Actor Model is a programming paradigm that supports constuction of Reactive Systems
 - it is Message Driven
 - Abstractions provide Elasticity and Resilience
@@ -80,6 +81,8 @@ Scaling down needs to be an option as well to improve cost effectiveness
 - on the jvm:
     - Akka implements the Actor Model
     - Akka is the foundation of Reactive tools like Lagom and Akka Streams
+
+- the actor model can be reactive at the level of actors and actors are within a microservice. You can have many actors within a single microservice. Whereas using these tools you have built something that is reactive at the level of microservices as opposed to internally. It's still possible to build something that is going to be reactive at the level of components inside that service but it gets a lot harder. Whereas with the Actor Model it's very easy
 
 ### Fundamental concepts of the Actor Model
 
@@ -95,3 +98,35 @@ Scaling down needs to be an option as well to improve cost effectiveness
 - Location Transparency enables actors to be both Resilient and Elastic
 
 ![Imgur](https://i.imgur.com/2vx8Sku.png)
+
+### Transparent remoting
+
+- Remote calls looke like local calls
+- Hide the fact that you are making remote calls
+- hides potential failure scenarios
+
+### Location Transparency
+
+- local calls look like remote calls
+- assume you are always making local calls
+
+### Importance of the Actor Model
+
+- There are many Reactive Programming tools
+- Most support only some of the Reactive Principles
+- You often have to combine different technologies to build a Reactive System
+- The actor model provides facilities to support all of the Reactive Principles
+    - Message Driven by default
+    - Location Transparency to support Elasticity and Resilience through distribution
+    - Elasticity and Resilience to provide Responsiveness
+
+## Reactive system without Actors
+
+- Components are added on rather than being built in
+- Requires additional infrastructure such as
+    - service registry
+    - load balancer
+    - message bus
+- Result will be Reactive at the large scale, not necessarily small
+
+![Imgur](https://imgur.com/Tf9TL34)
