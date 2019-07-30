@@ -72,3 +72,26 @@ Scaling down needs to be an option as well to improve cost effectiveness
     - eg. reactive microservices
 
 
+## The actor model
+- the Actor Model is a programming paradigm that supports constuction of Reactive Systems
+- it is Message Driven
+- Abstractions provide Elasticity and Resilience
+- it can be used to build Responsive software
+- on the jvm:
+    - Akka implements the Actor Model
+    - Akka is the foundation of Reactive tools like Lagom and Akka Streams
+
+### Fundamental concepts of the Actor Model
+
+- All cmputation occurs inside the Actors
+- Each actor has an address
+- Actors communicate only through asyncronous messages
+
+### Location Transparency
+
+- The message Driven nature of Actors supports Location Transparency
+- Actors communicate using the same technique, regardless of location
+- Local vs Remove is mostly configuration
+- Location Transparency enables actors to be both Resilient and Elastic
+
+![](https://imgur.com/a/E8sSfxN)
