@@ -56,3 +56,19 @@ Scaling down needs to be an option as well to improve cost effectiveness
 ### Netflix- example of responsive software
 - netflix is a good example of a reactive software
 - maintain resilience by reducing features (menu option missing)
+
+## Reactive Programming
+
+- Reactive programming can be used to create reactive systems
+- using reactive programming does not implies that your system is reactive
+- Supports breaking problems into small, discrete steps
+- steps are executed in an async/non-blocking fashion, usually via callback mechanism
+- future/promises, streams, rxJava/rxScala
+
+
+
+### Reactive Systems
+- reactive systems are separated along asyncronous boundaries
+    - eg. reactive microservices
+
+
