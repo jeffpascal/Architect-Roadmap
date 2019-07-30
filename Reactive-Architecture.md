@@ -37,3 +37,17 @@ Recovery - is delegated to an external componenet, because you cannot handle you
 - Predictive auto scalind techniques can be used to support elasticity
 - Scaling up provides responsiveness during peak, while scalind down improves cost effectiveness
 
+If we have elasticity we can implement techniques to increase load or decrease it as needed
+
+Scaling down needs to be an option as well to improve cost effectiveness
+
+### Message Driven
+
+- Responsiveness, Resilience, Elasticity are supported by a Message Driven Architecture
+- Messages are asyncronous and non-blocking
+- Provides Loose coupling, isolation, location transparency
+    - provides isolation and location transparent
+- Resources are consumed only while active
+    - not stuck waiting for a response form someone else
+        - while waiting you are consuming phisical resources
+    - you might be interested in the response but it comes asyncronously
