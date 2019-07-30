@@ -94,4 +94,4 @@ Scaling down needs to be an option as well to improve cost effectiveness
 - Local vs Remove is mostly configuration
 - Location Transparency enables actors to be both Resilient and Elastic
 
-![](https://imgur.com/a/E8sSfxN)
+![image](https://imgur.com/a/E8sSfxN)
