@@ -3,6 +3,7 @@ Road to architecture
 [My Learning](https://github.com/jeffpascal/My-Learning/blob/master/README.md)
 
 TODO: 
+- begin the second course on responsive applicaitons
 - master Java Developement
    - finish Badge courses
       - Open source **[done]**
