@@ -96,6 +96,8 @@ Scaling down needs to be an option as well to improve cost effectiveness
 - Actors communicate using the same technique, regardless of location
 - Local vs Remove is mostly configuration
 - Location Transparency enables actors to be both Resilient and Elastic
+- local calls look like remote calls
+- assume you are always making local calls
 
 ![Imgur](https://i.imgur.com/2vx8Sku.png)
 
@@ -104,11 +106,6 @@ Scaling down needs to be an option as well to improve cost effectiveness
 - Remote calls looke like local calls
 - Hide the fact that you are making remote calls
 - hides potential failure scenarios
-
-### Location Transparency
-
-- local calls look like remote calls
-- assume you are always making local calls
 
 ### Importance of the Actor Model
 
@@ -132,7 +129,9 @@ Scaling down needs to be an option as well to improve cost effectiveness
 ![Imgur](https://imgur.com/Tf9TL34)
 
 # Domani Driven Design
+
 ## Domanins
+
 - A domain is a sphere of knowledge
 - in the context of software, it refers to the business or idea that we are modeling
 - experts in the domain are people who understand the business, not necessarely the software
@@ -140,3 +139,12 @@ Scaling down needs to be an option as well to improve cost effectiveness
     - Note: The model is not software
         - the model represents our understanding of the domain
         - the software is an implementation of the model
+
+## Ubiquitous Language
+
+- communication between developers and domain experts requires a common language
+- terminology comes from the domain experts
+- words originate in the domain and are used in the software
+- avoid taking software terms and introducing them into the domain
+- *domain experts and software developers should be able to have a conversation without resorting to software terms*
+
