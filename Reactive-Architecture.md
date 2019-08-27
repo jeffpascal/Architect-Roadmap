@@ -130,3 +130,13 @@ Scaling down needs to be an option as well to improve cost effectiveness
 - Result will be Reactive at the large scale, not necessarily small
 
 ![Imgur](https://imgur.com/Tf9TL34)
+
+# Domani Driven Design
+## Domanins
+- A domain is a sphere of knowledge
+- in the context of software, it refers to the business or idea that we are modeling
+- experts in the domain are people who understand the business, not necessarely the software
+- key goals of ddd is to build a model that the domain experts understand
+    - Note: The model is not software
+        - the model represents our understanding of the domain
+        - the software is an implementation of the model

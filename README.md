@@ -3,6 +3,7 @@ Road to architecture
 [My Learning](https://github.com/jeffpascal/My-Learning/blob/master/README.md)
 
 TODO: 
+- begin the second course on responsive applicaitons
 - master Java Developement
    - finish Badge courses
       - Open source **[done]**
@@ -15,6 +16,9 @@ TODO:
       - https://w3-connections.ibm.com/blogs/alt?lang=en
    - https://cognitiveclass.ai/learn/reactive-architecture-foundations/ finish this
       - [reactive architecture](https://github.com/jeffpascal/Architect-Roadmap/blob/master/Reactive-Architecture.md)
+      - part 1 [done]
+      - part 2
+      - part 3
 - Read courses and articles by (sent by Laurentiu):
    - [Mark Richards]( https://www.developertoarchitect.com/) [50%]
    - [Neal Ford]( http://nealford.com/) 
