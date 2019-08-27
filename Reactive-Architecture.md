@@ -3,7 +3,7 @@
 - scales from 10 to 10 mil users
 - reduce amount of resources when we don't need them
 - minimum impact on user (ideally no effect)
-- scale across nay number of machines
+- scale across any number of machines
 - maintain a consistent level of quality and responsiveness despite all of these things
 
 ## React Principles
@@ -34,7 +34,7 @@ Recovery - is delegated to an external componenet, because you cannot handle you
 
 - Elasticity provides responsiveness, despite increases (or decreases) in load
 - Implies zero contention and no central bottlenecks
-- Predictive auto scalind techniques can be used to support elasticity
+- Predictive auto scaling techniques can be used to support elasticity
 - Scaling up provides responsiveness during peak, while scalind down improves cost effectiveness
 
 If we have elasticity we can implement techniques to increase load or decrease it as needed
