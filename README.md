@@ -5,9 +5,9 @@ Road to architecture
 TODO: 
 - begin the second course on responsive applicaitons
 - master Java Developement
-   - finish Badge courses
+   - finish Badge courses ***[done]***
       - Open source **[done]**
-      - Web developement
+      - Web developement [done]
       - Java performance tuning **[done]**
 - finish reading materials sent by Laurentiu (T-shape) (Cariera tehnica IBM cariera profesionala in contextul actual)
    - https://w3-connections.ibm.com/blogs/alt/entry/Are_T_shaped_professions_fit_for_Generation_Z_2_of_2?lang=en **[done]**
