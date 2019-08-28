@@ -18,3 +18,17 @@
 - avoid taking software terms and introducing them into the domain
 - *domain experts and software developers should be able to have a conversation without resorting to software terms*
 
+## Decomposing the Domain
+
+- Business Domains are often large and complicated
+- They contain many ideas, actions, and rules that interact in complex ways
+- Trying to model a large domain can become problematic
+
+### Some concepts may exist in multiple subdomains
+
+- shared concepts may not be identical initially
+- they may also evolve differently
+- avoid the temptation of abstract
+    - take concept of customer and always looks the same [[[FALLLLSE]]]
+- some concepts can cross multiple subdomains
+
