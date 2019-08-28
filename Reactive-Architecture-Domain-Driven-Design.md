@@ -1,6 +1,7 @@
 # Domani Driven Design
 
 - In modern Event First Domain Driven Design, we focus on the activities, or events, that happen in the domain to help us determine our Bounded Contexts.
+
 ## Domanins
 
 - A domain is a sphere of knowledge
@@ -30,9 +31,31 @@
 - shared concepts may not be identical initially
 - they may also evolve differently
 - avoid the temptation of abstract
-    - take concept of customer and always looks the same [[[FALLLLSE]]]
+    - take the concept of "customer" and always looks at it in the same way as different context (context of order or reservation) [[[FALLLLSE]]]
 - some concepts can cross multiple subdomains
 
+## Bounded Contexts
+
+- Each subdomain has its own ubiquitous language and model.
+- The language and model for a subdomain is called Bounded Context
+- Subdomains or Bounded Contexts are good starting points for building Reactive Microservices
+
+### Each bonded context can be a microservice
+
+- break a bounded context into multiple microservices
+- do not create one microservices for all bounded contexts. That#s a monolith.
+
+### Understanding Bounded Contexts
+
+#### How to determine bounded contexts
+
+    - consider human culture and interaction
+    - look for changes in the ubiquitous language
+        - if the use of language or the meaning of the language changes, that may suggest a new context
+    - look for a varying or unnecessary information
+        - employee id is very important in an employee, meaningless in a customer
+    - strongly separated bounded contexts will result in smooth workflows
+        - an awkward workflow may signal a misunderstanding of the domain
         - if a bounded context has too many dependencies it may be overcomplicated
 
 #### Event first Domain Driven Design
