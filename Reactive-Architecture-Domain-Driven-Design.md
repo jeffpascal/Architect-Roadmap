@@ -1,5 +1,6 @@
 # Domani Driven Design
 
+- In modern Event First Domain Driven Design, we focus on the activities, or events, that happen in the domain to help us determine our Bounded Contexts.
 ## Domanins
 
 - A domain is a sphere of knowledge
@@ -31,4 +32,13 @@
 - avoid the temptation of abstract
     - take concept of customer and always looks the same [[[FALLLLSE]]]
 - some concepts can cross multiple subdomains
+
+        - if a bounded context has too many dependencies it may be overcomplicated
+
+#### Event first Domain Driven Design
+     - traditionally, domain driven design focused on the objects within the domain
+        eg: server places an order is an event
+    - look to define the activities first then create boundaries
+    - event storming [book to read]
+
 
