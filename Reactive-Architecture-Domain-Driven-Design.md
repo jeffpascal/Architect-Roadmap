@@ -64,4 +64,22 @@
     - look to define the activities first then create boundaries
     - event storming [book to read]
 
+- Each bounded context may have domain concepts that are unique
+- concepts are not always ocmpatible fron one context to the next
+- anti-corruption layers are introduced to translate these concepts
+- an anti-corruption layer will prevent bounded contexts from leaking into each other
+- anti-corruption layers help the bounded context to stand alone
+
+### Context Maps
+- contxt maps are a way of bisualizing bounded contexts and the relationships between them
+- bounded contexts are drawn as simple shapes
+- lines connect the bounded contexts to indicate relationships
+- lines may be labelled to indicate the nature of the relationship
+- lines indicate dependencies
+
+TLDR:
+- Bounded context is an approximation of a component
+- Anti corruption layer is an abstract interface 
+- By studying the domain, we can extract nouns that determine a component
+
 
