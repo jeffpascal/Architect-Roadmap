@@ -82,4 +82,40 @@ TLDR:
 - Anti corruption layer is an abstract interface 
 - By studying the domain, we can extract nouns that determine a component
 
+## Activities in the domain
+
+### Commands
+
+- commands are a type of activity that occurs in the domain
+    - specific recipient in mind
+- represents a request to perform an action
+- the action has not yet happened and it can be rejected
+- usually delivered to a specific destination
+- causes a change to the state of the domain
+    - the domain won't be the same state after a command
+- example: add an item to an order, pay a bill, prepare a meal
+
+### Events
+
+- events are another activity in the domain
+- They Represent an action that happened in the past
+- because the action already completed, they can not be rejected
+- often broadcast to many destinations
+- record a change to the state of the domain, ofthen the result of a command
+- eg: an item was added to an order, a bill was paid, a meal was prepared
+- an event records a change in the domain (to the state) often result to a command
+- event is in the past tense
+
+### Queries
+
+- they represent a request of information about the domain
+- because they are a query, a response is always expected
+- usually delivered to a specific destination
+- queries should not alter the state of the domain
+- eg: get the details of an order, check if a bill has been paid
+
+#### Commands, Events, Queries are the messages in a Reactive System
+
+- They form the API for a Bounded Context or Microservice
+
 
