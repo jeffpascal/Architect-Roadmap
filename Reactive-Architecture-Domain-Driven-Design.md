@@ -118,4 +118,18 @@ TLDR:
 
 - They form the API for a Bounded Context or Microservice
 
+##### Example of bounded Contexts
 
+- Orders - Manages the contents of an order, and the lifecycle of the order.
+- Reservations - Handles reservations for tables, as well as marking tables as occupied.
+- Payments - Deals with collecting and recording payment details for orders.
+- Menu - Contains details about menu items, including their descriptions, photos, prices etc.
+- Customers - Manages customer personal data (name, phone number, address etc).
+
+##### Example of Commands
+
+- Open an Order (OpenOrder) (We use the name of the class)
+
+    - Here, the Command is "Open an Order". This is using domain terminology and we could talk to our domain experts about how we "Open an Order" and they would be able to grasp what we are talking about. When we translate that into code we use a class name such as "OpenOrder" or even "OpenAnOrder". This allows us to maintain the Ubiquitous Language in the code.
+
+### Ubiquotous Language to Code
