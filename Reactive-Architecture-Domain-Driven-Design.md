@@ -132,4 +132,41 @@ TLDR:
 
     - Here, the Command is "Open an Order". This is using domain terminology and we could talk to our domain experts about how we "Open an Order" and they would be able to grasp what we are talking about. When we translate that into code we use a class name such as "OpenOrder" or even "OpenAnOrder". This allows us to maintain the Ubiquitous Language in the code.
 
-### Ubiquotous Language to Code
+## Ubiquotous Language to Code
+
+### Value Objects (defined by its attributes)
+
+- A Value Object is defined by its attributes
+- Two value objects are equivalent if their attributes are the same
+- *Value objects are immutable*
+- in addition to state, value objects can contain business logic
+- Messages in Reactive Systems are implemented as Value Objects
+
+### Entities (defined by its key)
+
+- An **Entity** is defined by a unique identiy (i.e. an id or key)
+- An entity may change its attributes, but not its identity
+- If the identity changes, it is a new entity, regardless of its attributes
+- Entities are the single source of truth for the particular id
+- Entities can also contain business logic
+- Actors in Akka, Entities in Lagom
+
+### Aggregates
+
+- An *Aggregate* is a collection of domain objects bount to a root Entity
+- The root *Entity* is called **Aggregate Root**
+- Objects in an *Aggregate* can be treated as a single unit
+- Access to objects in the Aggregate must go thourgh the Aggregate Riit
+- Transactions should not span multiple Aggreate Roots
+- Aggregates are good candidates for distribution in a Reactive System
+
+#### Determining the Aggregate Roots
+
+- Choosing an aggregate root is not always straightforward
+- The aggregate root can be different from one context to the next
+- Some contexts may require multiple aggregate roots
+- *Usually one Aggregate Root per context*
+        Questions to consider:
+        Is the entity involved in most operations in that bounded context?
+        If you delete the entity, does it require you to delete other entities? **if i delete a reservation, a customer is still a customer. What if i delete all reservations? The customer will not matter anymore because he has no reservations**
+        Will a single transaction span multiple events? **A transaction should not span multiple aggregate roots**
