@@ -167,6 +167,6 @@ TLDR:
 - Some contexts may require multiple aggregate roots
 - *Usually one Aggregate Root per context*
         Questions to consider:
-        Is the entity involved in most operations in that bounded context?
-        If you delete the entity, does it require you to delete other entities? **if i delete a reservation, a customer is still a customer. What if i delete all reservations? The customer will not matter anymore because he has no reservations**
-        Will a single transaction span multiple events? **A transaction should not span multiple aggregate roots**
+        - Is the entity involved in most operations in that bounded context?
+        - If you delete the entity, does it require you to delete other entities? **if i delete a reservation, a customer is still a customer. What if i delete all reservations? The customer will not matter anymore because he has no reservations**
+        -Will a single transaction span multiple events? **A transaction should not span multiple aggregate roots**
