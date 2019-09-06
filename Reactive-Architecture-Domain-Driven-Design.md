@@ -153,6 +153,8 @@ TLDR:
 
 ### Aggregates
 
+- An Aggregate Root is an Entity in a Bounded Context that aggregates other objects and is not aggregated by anything. I.E. it is at the root of the aggregation tree. Aggregate Roots are always Entities, never Value Objects.
+
 - An *Aggregate* is a collection of domain objects bount to a root Entity
 - The root *Entity* is called **Aggregate Root**
 - Objects in an *Aggregate* can be treated as a single unit
@@ -170,3 +172,13 @@ TLDR:
         - Is the entity involved in most operations in that bounded context?
         - If you delete the entity, does it require you to delete other entities? **if i delete a reservation, a customer is still a customer. What if i delete all reservations? The customer will not matter anymore because he has no reservations**
         - Will a single transaction span multiple events? **A transaction should not span multiple aggregate roots**
+
+### Domain Abstractions
+
+#### Services
+
+- Business logic doesn't always fit with an entity or value object
+- The Logic can be encapsulated by a Service
+- Services should be stateless
+- Often used to abstract away an anti-corruption layer
+- Note: Too many services leads to an anaemic domain. Look for a missing domain object before resorting to a service
