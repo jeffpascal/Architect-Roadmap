@@ -17,8 +17,8 @@ TODO:
    - https://cognitiveclass.ai/learn/reactive-architecture-foundations/ finish this
       - [reactive architecture](https://github.com/jeffpascal/Architect-Roadmap/blob/master/Reactive-Architecture.md)
       - part 1 [done]
-      - part 2 [in-progress]
-      - part 3
+      - part 2 [done]
+      - part 3 [in-progress]
 - Read courses and articles by (sent by Laurentiu):
    - [Mark Richards]( https://www.developertoarchitect.com/) [50%]
    - [Neal Ford]( http://nealford.com/) 
