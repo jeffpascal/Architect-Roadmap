@@ -134,7 +134,7 @@
 - No backdoor access via the database
 - Allows the microservice to evolve internally without affecting the outside.
 
-![Imgur](https://imgur.com/UNrFkPo.png)
+![Imgur](https://i.imgur.com/LMahVPl.png)
 
 ## Isolation in Space
 
@@ -142,4 +142,4 @@
 - It should be possible to move a microservice to another machine, possibly in a different data center without issues
 - Allows the microservice to be scaled up/down to meed demand
 
-![Imgur](https://imgur.com/2NFwSfD.png)
+![Imgur](https://imgur.com/wAjGAQo.png)
