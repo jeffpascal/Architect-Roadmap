@@ -77,5 +77,4 @@
 - each microservice is scaled independently
 - Could be one or more copies of the service pet machine
 - each machine hosts a subset of the entire system
- ![Imgur](https://imgur.com/v3iEnTx)
- 
+ ![Imgur](https://imgur.com/v3iEnTx.png)
