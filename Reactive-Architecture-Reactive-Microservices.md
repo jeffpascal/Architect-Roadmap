@@ -61,7 +61,6 @@
 - Each component/microservice has its own independent data store
 - Microservices are independent and self governing
 
-
 ### Microservice characteristics
 
 - each service is deployed independently
@@ -290,7 +289,6 @@ ex: If you do something in a synchronous way, you need to wait for the task to f
 - We can have domain specific gateways for example Reservation domain has its own Gateway
 - **We are creating an additional layer of isolation between the client and the services**
 
-
 ##### test:
 
 ###### 1
@@ -337,9 +335,7 @@ They have built their system using a series of microservices. These microservice
 
 Although there are touch points between sales and inventory, they have tried to keep them as separate as possible. The goal is that a failure in one part of the system should be isolated so that it doesn't propagate to another part of the system. If the inventory management system is down, they want their customers to still be able to buy products, and vice versa.
 
-By isolating these two systems, they are using the technique called:
-
-**autonomy - correct**
+By isolating these two systems, they are using the technique called: **autonomy - correct**
 
 - Correct:They are attempting to build an autonomous system here so this is correct. However they are doing it using the specific technique of Bulkheading.
 
