@@ -18,7 +18,7 @@ TODO:
       - [reactive architecture](https://github.com/jeffpascal/Architect-Roadmap/blob/master/Reactive-Architecture.md)
       - part 1 [done]
       - part 2 [done]
-      - part 3 [in-progress]
+      - part 3 [done]
 - Read courses and articles by (sent by Laurentiu):
    - [Mark Richards]( https://www.developertoarchitect.com/) [50%]
    - [Neal Ford]( http://nealford.com/) 
@@ -41,8 +41,9 @@ Goals:
       - JPA and Hibernate
       - 
 
-- 
-- 
+- delivery pipeline (cloud)
+- learn google Cloud
+- Learn in-depth about microservices (preferably spring boot)
 - 
 - Architect
 
