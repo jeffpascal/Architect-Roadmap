@@ -44,7 +44,9 @@ Goals:
 - delivery pipeline (cloud)
 - learn google Cloud
 - Learn in-depth about microservices (preferably spring boot)
-- 
+- IBMCloud presentation
+-
+-
 - Architect
 
 
