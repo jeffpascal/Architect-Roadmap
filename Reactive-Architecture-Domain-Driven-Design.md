@@ -59,6 +59,7 @@
         - if a bounded context has too many dependencies it may be overcomplicated
 
 #### Event first Domain Driven Design
+
      - traditionally, domain driven design focused on the objects within the domain
         eg: server places an order is an event
     - look to define the activities first then create boundaries
@@ -175,10 +176,48 @@ TLDR:
 
 ### Domain Abstractions
 
-#### Services
+#### Services (stateless)
 
 - Business logic doesn't always fit with an entity or value object
 - The Logic can be encapsulated by a Service
 - Services should be stateless
 - Often used to abstract away an anti-corruption layer
 - Note: Too many services leads to an anaemic domain. Look for a missing domain object before resorting to a service
+ex: Email sender - does not contain any information. It just sends the email
+
+#### Factories
+
+- Logic to contruct new domain objects may not be trivial
+- May require access to enternal resources (databases, files, REST apis, etc)
+- Factories abstract away the logic of creation
+- usually implemented as a domain interface, with one or more concrete implementations
+
+#### Repositories
+
+- Similar to Factories, Repositories abstract away the retrieving of existing objects
+- Factories used to get new objects, Repositories are used to get, or modify, existing object
+- Often operate as abstraction layers over databases, but they can work with files, REST apis etc
+- Note: A repository does not autommatically imply a database
+
+### Hexagonal Architectures
+
+- very compatible with DDD
+- also known as *Ports and Adapters*
+- An alternative to the layered or *N-tier architecture (idea that you separate your application into layers)*
+- Domain is isolated to the center of the model, becomes the architectural focus
+- *Ports* are exposed as an API for the domain
+- infrastructure contains adapter that map to the ports
+
+- Hexagonal Architecture can be viewed as an onion
+- Domain is the center of the onion
+- API provides an interface too the Domain. There are your ports
+- Infrastructure adapts incoming and outgoing traffic into the ports
+- Outer layers depend on inner layers
+- Inner layers have no knowledge of outer layers
+- ensures proper separation of Infrastructure from Domain
+- Prevents concerns around databases, user interfaces etc. from bleeding into the domain
+- Can be enforced with package, or even project structure application
+- Allows your domain to be portable
+- much easier to swap out pieces of infrastructure without affecting the domain (changing the db/ui etc)
+
+
