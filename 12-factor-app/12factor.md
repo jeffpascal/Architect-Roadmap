@@ -107,7 +107,7 @@ Do not rely on session affinity, also called sticky sessions.
 Store state in a stateful backing service that is external to the process.
 Runtimes should be stateless, but the services can or do have state.
 
-[title](1.png)
+![title](1.png)
 
 This graphic illustrates how the state is stored in services and passed into the runtime. The runtime uses the state long enough to perform a unit of work and then throws it away. The runtime does not maintain state between units of work.
 
@@ -153,7 +153,7 @@ With vertical scaling, you run more instances of the app. One runtime runs more 
 
 With horizontal scaling, you run more instances of the app and run more runtimes, which keeps each runtime the same size. More runtimes still require more CPU and memory, but they can be distributed across multiple hosts, so all of the CPU and memory doesn’t need to belong to a single host. The following graphic shows an example of horizontal scaling.
 
-[title](2.png)
+![title](2.png)
 
 ### Disposability
 
@@ -168,7 +168,7 @@ Consider failover. Do not get attached with your runtimes; they are not meant to
 
 This graphic shows how an app can be run in two instances. When one instance is shut down or dies, its load fails over to the remaining instance, such that all the load goes to the remaining instance.
 
-[title](3.png)
+![title](3.png)
 
 ### Development and production parity
 
@@ -220,3 +220,72 @@ Microservices are an app architectural style that divides an app into components
 A microservices design implements tasks from beginning to end: From the GUI to the database, or at least from the service API to the database so that different GUIs and client apps can reuse the same business task functionality. The business task is meaningful to the business users, meaning no technical or infrastructure microservices.
 
 Each microservice has a well-defined interface and dependencies (for example, to other microservices and to external resources) so that the microservice can run fairly independently, and the team can develop it fairly independently.
+
+### Microservices: Making developers more efficient
+
+Microservices are often described in terms of using technology better. But microservices also make developers (not just computers) more efficient.
+
+It does so by enabling them to accomplish meaningful work while working in small teams. Small teams make developers (and people in general) more productive because they spend less time in meetings (and otherwise communicating with and coordinating with others) and more time developing code.
+
+Microservices accelerate delivery by minimizing communication and coordination among people, and reducing the scope and risk of change.
+
+### Microservices architecture
+
+The aim of a microservice architecture is to completely decouple app components from one another such that they can be maintained, scaled, and more.
+
+It’s an evolution of app architecture, service-oriented architecture (SOA), and publishing APIs:
+
+SOA: Focus on reuse, technical integration issues, technical APIs
+
+Microservices: Focus on functional decomposition, business capabilities, business APIs
+
+Microservice architecture as summarized in Martin Fowler’s paper would have been better named micro-component architecture because it is really about breaking apps up into smaller pieces (micro-components). For more information, see Microservices by Martin Fowler. https://martinfowler.com/articles/microservices.html
+
+### Example app that uses microservices
+
+Here’s an example of an app with a microservices architecture that demonstrates business tasks as components.
+
+This example app is for booking airline tickets. The app needs these components:
+
+Logging
+Metrics
+Health check
+Service endpoint
+Service registry
+Service management
+Each of these components is a fairly independent business task that can be developed separately and in priority order. Each means something to the business users and each has quality of service (QoS) targets.
+
+For example, in the following image, you can imagine that an airline booking app has components such as fare calculations, seat allocation, flight rewards programs, and so on.
+
+![title](4.png)
+
+
+### Key tenets of a microservices architecture
+
+These tenets test whether the architecture you’re implementing is microservices. The more you’re implementing these qualities into your app, the more you’re on the right track.
+
+- Large monolith architectures are broken down into many small services:
+    - Each service runs in its own process.
+    - The applicable cloud rule is one service per container.
+
+- Services are optimized for a single function:
+    - There is only one business function per service.
+    - The Single Responsibility Principle: A microservice should have one, and only one, reason to change.
+
+- Communication is through REST API and message brokers:
+    - Avoid tight coupling introduced by communication through a database.
+
+- Continuous integration and continuous deployment (CI/CD) is defined per service:
+    - Services evolve at different rates.
+    - You let the system evolve but set architectural principles to guide that evolution.
+
+- High availability (HA) and clustering decisions are defined per service:
+    - One size or scaling policy is not appropriate for all.
+    - Not all services need to scale; others require autoscaling up to large numbers.
+
+
+### Comparing monolithic and microservices architectures
+ 
+A side-by-side comparison shows the old way of architecting apps and the new way.
+
+![comparison](5.png)
