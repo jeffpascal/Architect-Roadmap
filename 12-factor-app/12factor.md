@@ -289,3 +289,331 @@ These tenets test whether the architecture you’re implementing is microservice
 A side-by-side comparison shows the old way of architecting apps and the new way.
 
 ![comparison](5.png)
+
+
+### Emergence of microservices from modern tools and processes
+
+So if this approach is such a good idea now, why weren’t we doing this 10 or 20 years ago?
+
+Many things have converged to make microservices make sense as an approach right now. Here are a few reasons; there are certainly more.
+
+#### Ease and feasibility of distributing components
+- Internet, intranet, or network maturity
+- RESTful API conventions or perceived simplicity, and lightweight messaging
+
+
+#### Ease and simplicity of cloud hosting
+
+- Lightweight runtimes
+  
+Examples: Node.js and WebSphere App Server Liberty
+- Simplified infrastructure
+  
+OS virtualization with hypervisors, containerization, infrastructure as a service (cloud infrastructure)
+Workload orchestration (examples: Kubernetes or Mesos)
+
+- Platform as a service:
+  
+Autoscaling, SLA management, messaging, caching, build management
+
+- Agile development methods, for example:
+Scrum, XP, TDD, IBM Cloud Garage Method, CI/CD
+Standardized code management in GitHub
+
+### Operational requirements for microservices
+
+As much as we’d like to say microservices are great and only make things better, there’s no free lunch; they have operational requirements too.
+
+The biggest requirement is operational complexity because there are more moving parts to monitor and manage. Many enterprises have difficulty knowing simply how many apps they have running in production and what they are, much less knowing when one’s stopped running. Now imagine that instead of trying to track dozens of apps, you’re trying to track hundreds if not thousands of microservices. This is the full employment act for DevOps—you’d better get good at it!
+
+Microservices value independence over reuse among services. (Reuse within a service is still prized.) Reuse creates dependencies, which makes it harder for teams to work independently; make sure the coordination friction is worth the reuse efficiency.
+
+The more pieces running independently, the more the distributed system becomes an issue (network latency, disconnects, fault tolerance, serialization), the harder it is to find everything, and the harder it is to do end-to-end testing with confidence.
+
+Yet, hold on! Istio provides the intelligent service mesh. More on that later.
+
+### Summary: Advantages of microservices
+
+These are the advantages of microservices:
+
+- Developed independently and has limited, explicit dependencies on other services
+- Developed by a single small team in which all team members can understand the entire code base
+- Developed on its own timetable so that new versions are delivered independently of other services
+- Scales and fails independently, which isolates any problems
+- Each can be developed in a different language
+- Manages their own data to select the best technology and schema
+
+## Layered application architecture
+
+So, this microservices stuff isn’t how we architect apps. That’s not how we do it around here! How did we get here? What can I learn from what I’ve done in the past with SOA and apply that to what I’ll do in the future?
+
+In the beginning (1980-2000 or so), there was the four-layer architecture although it was really three layers. The app model was a major innovation in the 1990s. We didn’t even call it a monolith, but of course it was a monolith.
+
+![layered application](6.png)
+
+
+This model was sometimes deployed as tiers with a GUI tier (View and App Model) running in a separate process from a domain tier (Domain Model and Integration) running (of course) separately from the database server. There's a great debate as to whether these tiers should be deployed across different servers, or code should be more co-located. The separate tier approach led to Java EJBs with remote interfaces. When the clients were found not to be EJB clients but Web browsers, the move was to deploy the tiers in the same server and use local EJB interfaces.
+
+Teams specialized by layers. GUI folks used AWT and Swing, and JSPs developed the views. Experts on the business requirements focused on the domain classes. The integration layer was developed by programmers who could get the object-relational frameworks and tools to work. Developers spent a lot of time in meetings deciding how the layers of code should work together. A change in one layer usually broke the ones above it. No one person could develop or maintain the whole app or even a vertical slice through the whole app.
+
+## SOA stack
+
+With SOA, the layers were redesigned. The domain layer became a layer of services that encapsulated the back-end systems of record (SoRs) and databases of record. Individual services were units of work (transactions) that GUIs could use. But to get any real work done, the SOA stack had to string together sequences of services as business processes that were themselves macroservices.
+
+Again, teams specialized. Some designed services; others implemented them to work with SoRs, and others specialized in BPM. No one could maintain a vertical slice.
+
+![SOA STACK](7.png)
+
+## Microservices and SOA
+
+Isn’t microservices just SOA by a different name? Microservices proponents like to say they’re “SOA done right,” but what does that mean? They’re different but related: an evolution from SOA to microservices. Both SOA and microservices deal with a system of services that communicate over a network, but there are differences.
+
+![SOA vs microservices](8.png)
+
+For more information about whether microservices are an evolution of SOA or are completely different concepts, see [Microservices vs SOA: How to start an argument](https://developer.ibm.com/integration/blog/2017/02/09/microservices-vs-soa/).
+
+## Monolithic architecture versus microservices architecture
+
+The following diagram shows the architecture of a monolithic app on the left compared to how such an app can become a set of microservices as shown on the right.
+
+![SOA STACK](9.png)
+
+## Microservices and IBM Cloud Kubernetes Service
+
+Going from a monolithic architecture to a microservice architecture is not as hard as you might think. Many large organizations face existing apps today that need to make a transition to cloud-friendly tools. For example, you can extend functionality to a monolithic app by adding cloud services. You can also start using operational tools, such as Grafana for monitoring, Istio for a service mesh, and IBM Cloud App ID for user authentication.
+
+So how does this evolution work? With IBM Cloud Kubernetes Service, you repackage an existing app, even monolithic ones into containers, for example:
+
+1.    Extract an existing Java app and prepare it for WebSphere Liberty on the cloud.
+2.    Set up Liberty and the database as microservices in Kubernetes.
+3.    Containerize the app as-is and deploy it to a cluster.
+4.    Add on a cloud service, such as AI.
+5.    Use cloud operation tools to monitor the app.
+
+Consider these other aspects of a containers-based approach:
+
+- Native CI/CD tools for fast roll-outs: Kubernetes orchestration, native Kubernetes rollbacks, Istio canary testing, and Helm's repeatable deployments
+- Flexible scaling infrastructure: when a single data center and a single app instance isn't enough
+- Simplified management: when infrastructure is stood up and managed for you, such as a Kubernetes master is managed, IaaS is managed, automated health monitoring and recovery for nodes
+- Built-in security: IBM Vulnerability Advisor + X-Force Exchange for insights; tightly controlled network traffic; isolation for master, nodes, and single tenant, encryption; and TLS certificates in IBM Certificate Manager
+
+
+## Microservices architecture mapped to the SOA stack
+
+Let’s take a look at microservices application architecture. We’ll compare it to the previous architectures described in this course.
+
+Previous architectures (four layer and SOA stack) are not gone completely.
+
+The business services tend to do what the domain model and integration layers used to do and so are still implemented that way. This is also what the SOA services used to do (or were supposed to). It’s just that these layers don’t span the whole app; they’re encapsulated within each service.
+
+The dispatchers do what the app model used to do: one-stop shopping for the client so that all of the business services together look like a single app that does exactly what the client needs. But now you have an app model for each client type, not a single app model layer that spans the entire app.
+
+What happened to the view layer? It moved into the clients where it belonged all along. Either the client is a mobile app, which is a view with perhaps a bit of its own app model; or it’s a partner app that’s more than just a view but that has its own views; or it’s a web app. Web apps used to contain a lot of view code to render the HTML and needed state from the view in an HTTP session, but no more. With modern techniques using HTML 5 and CSS 3, the web browser uses static files that are downloaded from the website to do all that rendering and store the session state.
+
+Example airline architecture
+This diagram demonstrates how you can functionally decompose a monolithic application to use individual microservices.
+
+![Example airline architecture](10.png)
+
+Microservices layers
+Each service is a smaller half-monolith.
+
+![Microservices layers](11.png)
+
+
+## Microservices types hierarchy
+
+All business services are pretty much the same architecturally, but there are subtype specializations of dispatchers. This doesn’t show a class or inheritance hierarchy; it shows specialization.
+
+How many of these you implement for an app depends on what types of clients the app supports and how specialized those clients require their dispatchers to be. One mobile dispatcher might support all devices, or you might need one for Blackberry. One iOS dispatcher might be insufficient, or you might need separate ones for iPhones versus iPads. One web dispatcher might be insufficient, or you might need ones for HTML 5 browsers versus older ones.
+
+![Microservices layers](12.png)
+
+### Language decisions
+
+Each microservice can be developed in any language that you want as long as it can be deployed on the cloud and supports REST APIs, but here are some trends.
+
+Dispatchers are often implemented in Node. Node is good at handling large numbers of clients and lots of concurrent I/O. For clients that are running JavaScript, Node on the server can be an easier fit.
+
+Business services are often written in Java. Java handles CPU-intensive tasks well and is good at connecting to external systems, especially with managed pools of shared connections. Many enterprises have lots of Java programmers on staff who have experience writing SOA services along these lines, so put them to work developing similar business logic as microservices.
+
+
+### Backend for frontend (BFF)
+
+Typically, rather than have one team write all or multiple dispatchers while someone else implements the clients, instead put the same team in charge of a dispatcher/client pair. The two need to be designed for each other, so have the communication take place within a team, not between teams. The skills tend to be different for different types of clients, so let the teams specialize.
+
+![App Teams](13.png)
+
+You can read more in Pattern: Backends For Frontends by Sam Newman.
+
+### Business service microservices dependencies: Typical
+
+Business services can depend on other business services. Just make sure each service is a complete business task. Resist the urge to separate out the database access layer into its own service.
+
+If services are each a complete business task, having business services collaborate is fine and can be helpful.
+
+Notice the dependencies shown here. This is an acyclic directed graph. This means that if service A depends on service B, then B does not also depend on A. These types of dependencies are easier to manage.
+
+![typical](14.png)
+
+
+### Business service microservices dependencies: Death Star
+
+This is a “death star” of dependencies among microservices. Everything depends on everything else. Search for microservices death star on the Internet, and you’ll find pictures and descriptions of apps with hundreds of services all drawn in a circle with lines connecting them all to each other. Yikes!
+
+How do you deploy such an architecture? Which one do you deploy first? If you have to change the API on one (a new version), which other ones do you need to change?
+
+Avoid letting this Death Star topology happen to your architecture.
+
+![Death Star](15.png)
+
+
+## Microservice Integration
+
+### Communication among services
+
+Now that you’ve got a bunch of microservices, how do you connect them to each other?
+
+Communication among services should be language-neutral. Different microservices can be implemented in different languages (now or in the future), so don’t lock yourself into a language-specific integration technology, for example, Java sockets or even CORBA/IIOP.
+
+The standard these days is REST and really JSON/REST, so use that. For asynchronous integration, follow an open, cloud-friendly standard like IBM Message Hub with Apache Kafka. Other examples of asynchronous protocols are AMQP, MQ Light, RabbitMQ.
+
+Resist the urge to use other approaches like XML or serialization. That leads to a combinatorial explosion of protocols that each API provider and consumer must support.
+
+With IBM Cloud Kubernetes Service, microservice service communication goes over virtual local area networks (VLANs). By default, IBM Cloud Kubernetes Service provides safe and free-flowing communication that you can change for inbound and outbound communication from the worker nodes.
+
+A Kubernetes service is a group of pods and provides network connections to these pods for other microservices in the cluster without exposing the actual private IP address of each pod. Similarly, you can choose to keep microservices private and use the built-in security features.
+
+### Synchronous versus asynchronous communication
+
+Synchronous REST is usually easier to get something working, so start with that. With synchronous, the whole loop (requester, provider, messages) must keep working through the whole lifetime of the invocation.
+
+![synchronous](16.png)
+
+
+Then, consider strategically converting some integration points to asynchronous, either because of the nature of the request (long running, runs in the background) or to make the integration more reliable and robust. With asynchronous, the invocation is broken into 3-4 parts. If any one fails, the system can probably retry it for you. And because the requester is stateless, the instance that receives the response doesn’t even need to be the instance that sent the request.
+
+![asynchronous](17.png)
+
+Asynchronous communication can make microservices more robust:
+
+The requester doesn’t have to block while the provider runs.
+A different requester instance can handle the response.
+The messaging system holds the action and result.
+
+### Microservices intercommunication
+
+You can mix and match synchronous and asynchronous communication. Usually a request/response invocation is either all synchronous or all asynchronous, but this shows that a single invocation can be sync in one direction and asynchronous in the other.
+
+![intercommunication](18.png)
+
+You can use lightweight protocols:
+
+REST such as JSON or HTTP
+Messaging such as Kafka
+The aim is complete decoupling, which is achieved by these methods:
+
+Messaging wherever possible
+Service registry or discovery
+Load balancing
+Circuit breaker patterns
+
+
+### Microservices communication in IBM Cloud Kubernetes Service
+
+Now that you've explored how microservices communicate with each other, you'll look at how they communicate as an app within a Kubernetes cluster.
+
+When you create a Kubernetes cluster in IBM Cloud Kubernetes Service, every cluster must be connected to a public VLAN. The public VLAN determines the public IP address that is assigned to a worker node during cluster creation.
+
+The public network interface for the worker nodes is protected by Calico network policies. These policies block most inbound traffic by default. However, inbound traffic that is necessary for Kubernetes to function is allowed, as are connections to NodePort, Loadbalancer, and Ingress services. NodePort is an easy way to start with simple public access to apps. As you progress to more sophisticated networking, the LoadBalancer gives you some portable public and private IP addresses. And when you grow to a larger microservices implementation, Ingress provides routing for multiple apps across HTTPS, TCP, or UDP load balancer. The following decision tree can guide your public access decisions:
+
+![intercommunication](19.png)
+
+
+For more information about these policies, including how to modify them, see Network policies. https://console.bluemix.net/docs/containers/cs_network_planning.html#planning
+
+
+### IBM Message Hub service
+
+IBM Cloud has a messaging system service called IBM Message Hub. It’s based on the Apache Kafka project, which is rapidly becoming a standard for high-volume messaging on cloud platforms.
+
+It’s used to integrate lots of services in cloud, but you can also use it to integrate your apps and microservices running in IBM Cloud. It supports two APIs: a simple HTTP REST API and a more complex but more powerful Kafka API.
+
+![intercommunication](20.png)
+
+
+## Service Mesh
+
+### Comparison of operations for monolithic and microservice architectures
+
+Service meshes can assist you with microservice implementations:
+
+- How can I find the service I need?
+- How can I scale my services?
+- How can I test new versions of services without impacting new users?
+- How can I test against failures?
+- How can I secure service-to-service communication?
+- How can I route traffic in a specific way?
+- How can I test circuit breaking or fault injection?
+- How can I monitor my microservices and collect metrics?
+- How can I do tracing?
+- Most importantly, how can I do all these things without changing individual microservices application code?
+  
+In traditional, monolithic apps, the locations of resources are well known, relatively static, and found in configuration files (or hard coded). Even if a monolithic app has been divided into different tiers, such as for the user interface, app logic, database access, and others, the location of resources used by the app tend to be well defined and static. Often times, all tiers of the app are hosted in the same geographical location even if they are replicated for availability. Connections among the different parts of the app tend to be well defined, and they don’t tend to change very much.
+
+
+
+However, this is not the case for a microservices implementation. Whether that app is built from scratch or is gradually being built by breaking off functions of a monolithic app, the location of a given service could be anywhere. The microservice could be in a corporate data center, a public cloud provider, or some combination. It could be hosted on bare metal servers, virtual machines, containers, or all these.
+
+A given service will usually have more than one instance or copy. Instances of a service can come and go as that service scales up and down under different load conditions. Instances can fail and be replaced by other instances hosted from the same physical location or other locations. You can also have certain instances hosting one version of a service and others hosting a different version. As you are using these services in your app, the last known location of the service might not be where it is now.
+
+The following questions reflect issues you encounter with microservices:
+
+### A service mesh can help
+
+A service mesh can help you solve the issues that arise when you’re implementing a microservices app. Here is the list of issues shown earlier. Each issue is matched with a generic function, typically provided by a service mesh that can address the issue. The next several sections in this course will provide more detailed description of each of these generic functions, but here is a brief introduction.
+
+![intercommunication](21.png)
+
+A service registry is used to keep track of the location and health of services, so a requesting service can be directed to a provider service in a reliable way. Working hand in hand with the service registry is the function of service discovery. Service discovery uses the service registry’s list of available services and instances of those services, and it directs requests to the appropriate instance based on pure load balancing or any other rule that has been configured.
+
+Some service meshes provide automated testing facilities. This gives you the ability to simulate the failure or temporary unavailability of one or more services in your app, and to make sure the resiliency features that you designed will work to keep the app functional. Two functions that can help to provide this resiliency are circuit breakers and bulkheads. Open-source mesh functions can be used to solve many of the challenges of implementing microservices.
+
+### Service registry
+
+![service mesh](22.png)
+
+Every service mesh will have a service registry. The service registry is a simple key-value pair data store, maintaining a current list of all working service instances and their locations. As each service instance starts, it will register itself with the service registry, either through its own client code or through a third-party registrar function. For instance, your service instances might be implemented in containers that use the Kubernetes container cluster manager. Kubernetes provides a third-party registrar service for those containers in its clusters.
+
+After a service instance has registered its existence with the service registry, the service registry will use a heartbeat mechanism, either in-bound or out-bound, to keep its list of instances current.
+
+![self-registration](23.png)
+
+Because the service registry is so critical to the implementation, it needs to be made highly available in some way.
+
+### Service discovery and service proxy
+
+![self-registration](24.png)
+
+The heart of any service mesh is the service registry and service discovery functions. These are the functions that enable each service to find and connect with the other services it needs to do its work. The source of all knowledge is the service registry. The service registry maintains a list of all service instances and their locations. As each service instance starts, it checks in with the service registry, providing its name and location.
+
+After this initial check-in, each service registry implementation will have some kind of heartbeat mechanism to keep its list current, removing any instances it can no longer contact. Depending on the overall design of the app, each service instance can be either a service client, requesting data or functions from other services, a service provider, providing data or functions to service clients, or both. Whenever a service needs another service, it uses the service discovery function to find an instance of that service.
+
+![self-registration](25.png)
+
+The service discovery function works with the service registry function to make this happen. There are two basic types of service discovery functions that a given mesh could employ, client-side or server-side. The graphic shown above illustrates both types of service discovery and various ways of accomplishing each.
+
+
+### Client-side discovery
+
+The first type of service discovery is client-side discovery. Using this method, the requesting service, or service client, works directly with the service registry to determine all the available instances of the service it needs and is also responsible for deciding which of those service instances it will use for its request.
+
+As mentioned previously, you can use several possible rules to help you decide which instance to use.
+
+You might use round-robin load balancing where you spread each request evenly across all the instances, which sends each request to the next instance in the list. You might also use a different kind of rule, having certain clients access certain provider instances, to test new versions or for some other reason.
+
+In any case, when you use client-side discovery, the client service is responsible for making the decision and following the decision to contact the appropriate service instance. The client will use some client code to make that happen.
+
+In the following illustration, the requesting service instance A on the left has discovered from the service registry that there are three instances of the service it needs. Using the rule it has chosen, the requesting service has determined to contact service instance B on the right for its request.
+
+![self-registration](26.png)
