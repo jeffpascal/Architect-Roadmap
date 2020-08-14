@@ -617,3 +617,144 @@ In any case, when you use client-side discovery, the client service is responsib
 In the following illustration, the requesting service instance A on the left has discovered from the service registry that there are three instances of the service it needs. Using the rule it has chosen, the requesting service has determined to contact service instance B on the right for its request.
 
 ![self-registration](26.png)
+
+
+### Server-side discovery
+
+The second type of service discovery is called server-side discovery. This method introduces another component, labelled the load balancer in the following illustration. It is commonly called the service proxy in microservices discussions.
+
+The task of querying the service registry and directing a request to the appropriate service instance is delegated to the load balancer. In some implementations, such as Istio, the load balancer can be programmed with specific rules to govern its choice of service instance, beyond just using round-robin load balancing. The nginx load balancer is built into several service meshes you might read about in the marketplace.
+
+![self-registration](27.png)
+
+A major benefit of this load-balancing approach is that you need only the function of querying the service registry and directing requests to service instances implemented one time in the load balancer. A possible drawback is that the load balancer is one more component to manage. In most cases, this is not a problem because the load balancer is provided by the service mesh.
+
+### Automated testing
+
+![self-registration](28.png)
+
+One of the premises of cloud native and microservice architectures is that they should be designed to run on unreliable systems. You should expect components to fail and build resiliency into your apps such that they can withstand those failures. One of the basic design points of this strategy is to always have more than one instance of any given service so that your app can survive the failure of a given instance and continue to function while that instance is restarted.
+
+Automated testing tools are useful to ensure the resiliency of your microservices app. Examples of these tools include Netflix Chaos Monkey, the Netflix Simian Army, and the features built into Istio.
+
+With IBM Cloud Kubernetes Service, you can manage the rollout of your changes in an automated and controlled fashion. If your rollout tests aren't going well, you can roll back your deployment to the previous revision.
+
+This flow shows how you use Kubernetes to easily manage app problems during testing:
+
+1. Before you begin, create a deployment.
+2. Roll out a change to a microservice. For example, you might want to change the image that you used in your initial deployment. When you deploy microservices with Kubernetes, the change is immediately applied and logged in the roll-out history.
+3. Test the status of your deployment with your operational and testing tools.
+4. View the rollout history for the deployment and identify the revision number of your last deployment.
+5. When ready, roll back to the previous version or specify a revision.
+
+### Circuit breaker
+
+![self-registration](29.png)
+
+The circuit breaker pattern is a programming tool included with Istio and Netflix Hystrix. Circuit breakers work to prevent response delays from a given service dependency caused by failure or latency, so that delays don’t cause broader latencies and failures throughout the app. The breaker allows you to set timeout thresholds and failure thresholds that allow you to fail fast from such situations with the expectation of building an alternative plan into your app.
+
+The circuit breaker works as shown in the diagram below. You can define threshold numbers for timeout and timed out requests. As you make service calls through Hystrix and the thresholds are exceeded, the circuit trips and subsequent requests fail immediately. This allows you to follow the alternative plan that you should have built in to your app.
+
+You also configure a value for these situations:
+
+How long a recovery time you allow before opening the circuit again
+Trying a call to the service again
+Testing your thresholds
+
+![self-registration](30.png)
+
+### Bulkhead
+
+
+![self-registration](31.png)
+
+The Bulkhead pattern is another tool included with Netflix Hystrix that prevents response delays from a given service call from causing wider problems throughout the app. This behavior is accomplished by using separate thread pools for connection attempts to other systems so that delays called by latency or failure of a given service are isolated to that service and do not use all the threads for the app as more requests are made. By using separate connection pools for each dependent service, failure on any service is isolated to that service and does not cause broader issues in the app.
+
+
+![self-registration](32.png)
+
+## Istio
+
+### Istio open platform service mesh
+
+Istio is an open platform service mesh implementation for connecting, managing, and securing microservices. Istio provides an easy way to create a network of deployed services with load balancing, service-to-service authentication, monitoring, and more without requiring any changes in service code. You add Istio support to services by deploying a special sidecar proxy throughout your environment that intercepts all network communication among microservices, which is configured and managed using Istio’s control plane functionality.
+
+History of Istio
+The release of Istio was a result of collaboration between IBM, Google, and Lyft to provide traffic flow management, access policy enforcement, and telemetry data aggregation between microservices. All those are achieved without requiring any changes to the application code. Thus, developers can focus on business logic and quickly integrate new features.
+
+Before combining forces, IBM, Google, and Lyft had been addressing separate but complementary pieces of the problem.
+
+- IBM’s Amalgam8 project is a unified service mesh that provides a traffic routing fabric with a programmable control plane to help internal and enterprise customers with A/B testing, canary releases, and to systematically test the resilience of services against failures.
+- Google’s Service Control provides a service mesh with a control plane that focuses on enforcing policies such as ACLs, rate limits, and authentication in addition to gathering telemetry data from various services and proxies.
+- Lyft developed the Envoy proxy to aid its microservices journey, which brought the company from a monolithic app to a production system spanning 10,000 or more VMs handling 100 or more microservices.
+  
+#### Why use Istio?
+
+Istio addresses many of the challenges faced by developers and operators as monolithic applications transition towards a distributed microservice architecture. As a service mesh grows in size and complexity, it can become harder to understand and manage. Its requirements can include discovery, load balancing, failure recovery, metrics, and monitoring, and often more complex operational requirements such as A/B testing, canary releases, rate limiting, access control, and end-to-end authentication.
+
+Istio provides a complete solution to satisfy the diverse requirements of microservice applications by providing behavioral insights and operational control over the service mesh as a whole. It provides several key capabilities uniformly across a network of services:
+
+- Traffic management: Control the flow of traffic and API calls between services, make calls more reliable, and make the network more robust in the face of adverse conditions.
+- Observability: Gain understanding of the dependencies between services and the nature and flow of traffic between them, providing the ability to quickly identify issues.
+- Policy enforcement: Apply organizational policies to the interaction between services and ensure access policies are enforced and resources are fairly distributed among consumers. Policy changes are made by configuring the mesh, not by changing application code.
+- Service identity and security: Provide services in the mesh with a verifiable identity and provide the ability to protect service traffic as it flows over networks of varying degrees of trustability.
+  
+In addition to these behaviors, Istio is designed for extensibility to meet diverse deployment needs:
+
+- Platform support: Istio can run in a variety of environments including ones that span cloud, on-premises, Kubernetes, Mesos, and so on.
+- Integration and customization. The policy enforcement component can be extended and customized to integrate with existing solutions for ACLs, logging, monitoring, quotas, auditing, and more.
+
+These capabilities greatly decrease the coupling between application code, the underlying platform, and the policy. This decreased coupling not only makes services easier to implement, but also makes it simpler for operators to move application deployments between environments or to new policy schemes. Applications become inherently more portable as a result.
+
+### How Istio Works
+
+An Istio service mesh is logically split into a data plane and a control plane.
+
+The data plane is composed of a set of intelligent proxies (Envoy) deployed as sidecars that mediate and control all network communication among microservices.
+The control plane is responsible for managing and configuring proxies to route traffic and enforcing policies at runtime.
+The following diagram shows the different components in each plane:
+
+![self-registration](33.png)
+
+You’ll hear the term sidecar when discussing Istio. You’ll see how Istio relies on sidecars as an important component of its architecture. Let’s first understand what sidecar is.
+
+#### Sidecar proxy
+
+A service mesh implementation, such as Istio, uses proxies that are usually deployed as sidecars in pods. A proxy controls access to another object. Istio uses proxies between services and clients. It enables the service mesh to manage interactions.
+
+As a point of review, Kubernetes deploys containers into pods and all the containers in a pod are hosted on the same node. A pod can manage the network access to the containers in the pod. A pod typically hosts a single container, but can host multiple pods as a unit.
+
+A sidecar adds behavior to a container without changing it. In that sense, the sidecar and the service behave as a single enhanced unit. The pods host the sidecar and service as a single unit.
+
+![self-registration](34.png)
+
+#### Envoy
+
+Istio uses an extended version of the Envoy proxy https://www.envoyproxy.io/docs/envoy/latest/ , a high-performance proxy developed in C++, to mediate all inbound and outbound traffic for all services in the service mesh. Istio uses Envoy’s many built-in features such as dynamic service discovery, load balancing, TLS termination, HTTP/2 and gRPC proxying, circuit breakers, health checks, staged rollouts with %-based traffic split, fault injection, and rich metrics.
+
+Envoy is deployed as a sidecar to the relevant service in the same Kubernetes pod. This allows Istio to extract a wealth of signals about traffic behavior as attributes https://istio.io/docs/concepts/policy-and-control/attributes.html , which in turn it can use in Mixer to enforce policy decisions and be sent to monitoring systems to provide information about the behavior of the entire mesh. The sidecar proxy model also allows you to add Istio capabilities to an existing deployment with no need to rearchitect or rewrite code. You can read more about why this approach was chosen in Design Goals https://istio.io/docs/concepts/what-is-istio/goals.html .
+
+#### Mixer
+
+Mixer https://istio.io/docs/concepts/policy-and-control/mixer.html is a platform-independent component responsible for enforcing access control and usage policies across the service mesh and collecting telemetry data from the Envoy proxy and other services. The proxy extracts request level attributes, which are sent to Mixer for evaluation. For more information on this attribute extraction and policy evaluation, see Mixer Configuration https://istio.io/docs/concepts/policy-and-control/mixer-config.html . Mixer includes a flexible plugin model that enables it to interface with a variety of host environments and infrastructure back ends, which abstracts the Envoy proxy and Istio-managed services from these details.
+
+#### Pilot
+
+Pilot https://istio.io/docs/concepts/traffic-management/pilot.html provides service discovery for the Envoy sidecars, traffic management capabilities for intelligent routing (for example, A/B tests and canary deployments), and resiliency (timeouts, retries, circuit breakers, and more). It converts a high-level routing rules that control traffic behavior into Envoy-specific configurations and propagates them to the sidecars at runtime. Pilot abstracts platform-specific service discovery mechanisms and synthesizes them into a standard format consumable by any sidecar that conforms to the Envoy data plane APIs https://github.com/envoyproxy/data-plane-api. This loose coupling allows Istio to run on multiple environments (for example, Kubernetes, Consul/Nomad) while maintaining the same operator interface for traffic management.
+
+#### Citadel
+
+Citadel https://istio.io/docs/concepts/security/mutual-tls.html (previously called Istio Auth) provides strong service-to-service and end-user authentication using mutual TLS, with built-in identity and credential management. It can be used to upgrade unencrypted traffic in the service mesh and provides operators the ability to enforce policy that is based on service identity rather than network controls. Future releases of Istio will add fine-grained access control and auditing to control and monitor who accesses your service, API, or resource by using a variety of access control mechanisms, including attribute and role-based access control and authorization hooks.
+
+### Istio mesh request flow
+
+The flow shown here is generic to any service mesh but can be considered for Istio.
+
+![self-registration](35.png)
+
+As stated earlier, a service mesh can be built by using sidecars. The sidecars handle both ingress (entering) and egress (exiting) traffic to a service. In a similar way, the Istio mesh manages and controls the ability of services and users to access the services under its control.
+
+The use of sidecars allows for several desirable properties to be included in the service mesh:
+
+- Common functions performed inside the app code are included in the sidecar. These include telemetry, distributed tracing, and TLS termination/initiation.
+- Useful features can also be included in the sidecar, such as circuit breakers, rate limits, intelligent routing for A/B testing, and canary releases.
